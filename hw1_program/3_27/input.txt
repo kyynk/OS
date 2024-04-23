@@ -1,0 +1,2 @@
+Hello, this is the content of input.txt.
+This file will be copied to another file using file_copy_with_pipe.c.

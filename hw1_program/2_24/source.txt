@@ -1,0 +1,4 @@
+i want to copy
+this is source in source.txt
+
+and it will copy to destination.txt
