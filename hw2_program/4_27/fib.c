@@ -11,10 +11,10 @@ struct ThreadArgs {
 };
 
 // Function to generate Fibonacci sequence
-void *generateFibonacci(void *args) {
-    struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-    int n = threadArgs->n;
-    int *fib = threadArgs->fib;
+void *generate_fibonacci(void *args) {
+    struct ThreadArgs *thread_args = (struct ThreadArgs *)args;
+    int n = thread_args->n;
+    int *fib = thread_args->fib;
     
     fib[0] = 0;
     fib[1] = 1;
@@ -35,7 +35,7 @@ int main() {
 
     // Check input validity
     if (n <= 0 || n > MAX_SIZE) {
-        printf("Invalid input.\n");
+        printf("Invalid input.\nNumber should in range (0, 100].");
         return 1;
     }
 
@@ -45,7 +45,7 @@ int main() {
     args.n = n;
 
     // Create thread
-    pthread_create(&tid, NULL, generateFibonacci, (void *)&args);
+    pthread_create(&tid, NULL, generate_fibonacci, (void *)&args);
 
     // Wait for thread to finish
     pthread_join(tid, NULL);
