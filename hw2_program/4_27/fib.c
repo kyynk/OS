@@ -29,11 +29,9 @@ void *generate_fibonacci(void *args) {
 int main() {
     int n;
 
-    // Input the number of Fibonacci numbers to generate
     printf("Enter the number of Fibonacci numbers to generate: ");
     scanf("%d", &n);
 
-    // Check input validity
     if (n <= 0 || n > MAX_SIZE) {
         printf("Invalid input.\nNumber should in range (0, 100].");
         return 1;
