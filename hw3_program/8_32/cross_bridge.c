@@ -51,13 +51,9 @@ int main() {
     pthread_t threads[6];
     srand(time(NULL));
 
-    for (int i = 0; i < 6; i++) {
-        if (rand()%2) {
-            pthread_create(&threads[i], NULL, northbound_farmer, NULL);
-        }
-        else {
-            pthread_create(&threads[i], NULL, southbound_farmer, NULL);
-        }
+    for (int i = 0; i < 3; i++) {
+        pthread_create(&threads[i], NULL, northbound_farmer, NULL);
+        pthread_create(&threads[i+3], NULL, southbound_farmer, NULL);
     }
 
     for (int i = 0; i < 6; i++) {
