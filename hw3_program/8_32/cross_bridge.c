@@ -19,7 +19,7 @@ void *northbound_farmer(void *arg) {
 
     // Cross the bridge
     printf("Northbound farmer is crossing the bridge.\n");
-    sleep(rand() % 5); // Simulate travel time
+    sleep(rand() % 3); // Simulate travel time
     printf("Northbound farmer is crossing done.\n");
 
     pthread_mutex_lock(&mutex);
@@ -38,7 +38,7 @@ void *southbound_farmer(void *arg) {
 
     // Cross the bridge
     printf("Southbound farmer is crossing the bridge.\n");
-    sleep(rand() % 5); // Simulate travel time
+    sleep(rand() % 3); // Simulate travel time
     printf("Southbound farmer is crossing done.\n");
 
     pthread_mutex_lock(&mutex);
@@ -48,15 +48,22 @@ void *southbound_farmer(void *arg) {
 }
 
 int main() {
-    pthread_t threads[6];
+    int n;
+    printf("input even number of total farmers: ");
+    scanf("%d", &n);
+    if (n > 10 || n <= 0 || n%2 == 1) {
+        printf("please input a even number which >0, <=10\n");
+        return 1;
+    }
+    pthread_t threads[n];
     srand(time(NULL));
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < n/2; i++) {
         pthread_create(&threads[i], NULL, northbound_farmer, NULL);
-        pthread_create(&threads[i+3], NULL, southbound_farmer, NULL);
+        pthread_create(&threads[i+n/2], NULL, southbound_farmer, NULL);
     }
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < n; i++) {
         pthread_join(threads[i], NULL);
     }
 
