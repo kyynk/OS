@@ -110,7 +110,7 @@ int C_SCAN(int requests[], int length, int head_track) {
         printf("C-SCAN Total Movement (method 1): %d\n", ((CYLINDERS - 1) - head_track) + (sorted[index - 1] - 0));
     }
     else {
-        printf("C-SCAN Total Movement (method 1)a: %d\n", (sorted[length - 1] - head_track));
+        printf("C-SCAN Total Movement (method 1): %d\n", (sorted[length - 1] - head_track));
     }
 
     // method 2
